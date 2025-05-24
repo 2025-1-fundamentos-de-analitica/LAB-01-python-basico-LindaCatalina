@@ -15,3 +15,20 @@ def pregunta_03():
     [('A', 53), ('B', 36), ('C', 27), ('D', 31), ('E', 67)]
 
     """
+    fila = []
+    with open("files/input/data.csv", "r", encoding="utf-8") as f:
+        for line in f:
+            renglon = list(line.strip().split("\t"))
+            letra = renglon[0]
+            numero = int(renglon[1])
+            fila.append((letra, numero))
+    secuence = sorted(fila)
+    dicc = {}
+    for key, value in secuence:
+        if key in dicc:
+            dicc[key] += value
+        else:
+            dicc[key] = value
+    return list(dicc.items())
+
+pregunta_03()
