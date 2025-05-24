@@ -15,3 +15,22 @@ def pregunta_12():
     {'A': 177, 'B': 187, 'C': 114, 'D': 136, 'E': 324}
 
     """
+    with open('files/input/data.csv', 'r') as file:
+        data = file.readlines()
+
+    count = {}
+
+    for i in data:
+        i = i.split()
+        letter = i[0]
+        values = i[4].split(',')
+        for j in values:
+            value = int(j.split(':')[1])
+            if letter in count:
+                count[letter] += value
+            else:
+                count[letter] = value
+
+    return count
+
+pregunta_12()
